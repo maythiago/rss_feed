@@ -1,0 +1,12 @@
+<h1>News List</h1>
+<ul>
+  <% @news_items.each do |news| %>
+    <li id="news_<%= news[:title].parameterize %>">
+      <h2><%= news[:title] %></h2>
+      <%= button_to 'Generate Summary', summary_feed_path(feed_title: news[:title], feed_content: news[:content]), method: :post, data: { turbo_frame: "news_summary_#{news[:title].parameterize}" } %>
+      <div id="feed_summary_<%= news[:title].parameterize %>" data-controller="turbo">
+        <!-- The summary will be loaded here -->
+      </div>
+    </li>
+  <% end %>
+</ul>
