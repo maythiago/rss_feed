@@ -18,8 +18,15 @@ module Client
       sanitized_content = ActionView::Base.full_sanitizer.sanitize(content)
       puts sanitized_content
       <<PROMPT
-Noticia: #{sanitized_content}
 Resuma esta notícia de forma clara e simples, destacando os fatos mais importantes e explicando o contexto.
+
+Notícia:
+#{sanitized_content}
+
+Resumo: [Breve síntese da notícia]
+Fatos Principais: [Lista dos principais fatos da notícia]
+Contexto: [Explicação breve do contexto]
+Conclusão: [Resumo final em um único parágrafo]
 PROMPT
     end
   end
