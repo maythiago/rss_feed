@@ -8,6 +8,7 @@ module Client
       URI.open(url) do |rss|
         feed = RSS::Parser.parse(rss)
         feed.items.each do |item|
+
           news_items << {
             title: item.title,
             link: item.link,
@@ -18,6 +19,7 @@ module Client
           }
         end
       end
+
       news_items
     end
   end

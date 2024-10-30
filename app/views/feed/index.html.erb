@@ -1,16 +1,5 @@
-<h1>News List</h1>
-<ul>
+<div class="columns is-multiline">
     <% @news_items.each do |news| %>
-        <div class="box">
-            <li id="news_<%= news[:title].parameterize %>">
-                <h2>
-                    <%= news[:title] %>
-                </h2>
-                    <div id="feed_summary_<%= news[:title].parameterize %>" data-controller="turbo">
-                        <%= button_to 'Generate Summary' , summary_feed_path(feed_title: news[:title], feed_content: news[:content]), method: :post, data: { turbo_frame: "news_summary_#{news[:title].parameterize}" }, class: 'button is-primary' %>
-                        <!-- The summary will be loaded here -->
-                    </div>
-            </li>
-        </div>
-        <% end %>
-</ul>
+        <%= render partial: 'news_item', locals: { news: news } %>
+    <% end %>
+</div>

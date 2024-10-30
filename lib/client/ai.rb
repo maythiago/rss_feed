@@ -1,7 +1,7 @@
 module Client
   class Ai
     include HTTParty
-    default_timeout 120
+    default_timeout 180
 
     def self.generate(content)
       response = post('http://localhost:11434/api/generate', body: {
@@ -16,12 +16,11 @@ module Client
 
     def self.prompt(content)
       sanitized_content = ActionView::Base.full_sanitizer.sanitize(content)
-      puts sanitized_content
+
       <<PROMPT
 Resuma esta notícia de forma clara e simples, destacando os fatos mais importantes e explicando o contexto.
 
-Notícia:
-#{sanitized_content}
+Notícia: #{sanitized_content}
 
 Resumo: [Breve síntese da notícia]
 Fatos Principais: [Lista dos principais fatos da notícia]
