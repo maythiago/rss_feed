@@ -10,8 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_30_011123) do
-  create_table "posts", force: :cascade do |t|
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_005246) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "contexts", force: :cascade do |t|
+    t.text "summary"
+    t.text "principal_fact", default: [], array: true
+    t.text "conclusion"
+    t.text "context"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

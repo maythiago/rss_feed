@@ -13,18 +13,25 @@ class FeedController < ApplicationController
     content = news.find { |item| item[:guid] == news_guid }
 
     summary = Client::Ai.generate(content)["response"]
+    json = JSON.parse(summary)
+    p "=" * 100
+    p json
+    p "=" * 100
 
-    p "=" * 100
-    p summary
-    p "=" * 100
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{news_guid.parameterize}", partial: "feed/summary", locals: { summary: summary }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{news_guid.parameterize}", partial: "feed/summary", locals: { summary: json }) }
     end
   end
 
   private
 
   def news
-    @news ||= Client::Rss.fetch_rss_feed(URL)
+    @news ||= urls.map do |url|
+     Client::Rss.fetch_rss_feed(url)
+    end.flatten
+  end
+
+  def urls
+    Source.all.pluck(:url)
   end
 end

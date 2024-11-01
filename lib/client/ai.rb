@@ -7,6 +7,7 @@ module Client
       response = post('http://localhost:11434/api/generate', body: {
                                  model: 'llama3.2',
                                  prompt: prompt(content),
+                                 format: "json",
                                  stream: false
                                }.to_json)
       raise 'Error' if response.code != 200
@@ -26,6 +27,21 @@ Resumo: [Breve síntese da notícia]
 Fatos Principais: [Lista dos principais fatos da notícia]
 Contexto: [Explicação breve do contexto]
 Conclusão: [Resumo final em um único parágrafo]
+
+Retorne as informações acima no formato json:
+- summary: string
+- principal_facts: string[]
+- context: string
+- conclusion: string
+
+Exemplo de saída:
+{
+  "summary": "Breve sintese da notícia",
+  "principal_facts": ["Fato 1", "Fato 2"],
+  "context": "Explicação breve do contexto",
+  "conclusion": "Resumo final em um único parágrafo"
+}
+
 PROMPT
     end
   end
