@@ -10,20 +10,28 @@ class FeedController < ApplicationController
   def summary
     news_title = params[:feed_title]
     news_guid = params[:feed_guid]
-    content = news.find { |item| item[:guid] == news_guid }
+    summary_model = fetch_summary(news_guid)
 
-    summary = Client::Ai.generate(content)["response"]
-    json = JSON.parse(summary)
-    p "=" * 100
-    p json
-    p "=" * 100
+    pp summary_model
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{news_guid.parameterize}", partial: "feed/summary", locals: { summary: json }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{news_guid.parameterize}", partial: "feed/summary", locals: { summary: summary_model }) }
     end
   end
 
   private
+
+  def fetch_summary(external_id)
+    Summary.find_by(external_id: external_id) || generate_summary(external_id)
+  end
+
+  def generate_summary(external_id)
+    content = news.find { |item| item[:guid] == external_id }
+    response = Client::Ai.generate(content)["response"]
+    json = JSON.parse(response)
+
+    Summary.create!(external_id: external_id, summary: json["summary"], context: json["context"], principal_fact: json["principal_facts"], conclusion: json["conclusion"])
+  end
 
   def news
     @news ||= urls.map do |url|
