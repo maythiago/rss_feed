@@ -14,15 +14,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_151805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contexts", force: :cascade do |t|
-    t.text "summary"
-    t.text "principal_fact", default: [], array: true
-    t.text "conclusion"
-    t.text "context"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sources", force: :cascade do |t|
     t.string "url", limit: 255
     t.datetime "created_at", null: false
@@ -31,7 +22,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_151805) do
 
   create_table "summaries", force: :cascade do |t|
     t.text "summary"
-    t.text "principal_fact"
+    t.text "principal_facts", default: [], array: true
     t.text "conclusion"
     t.text "context"
     t.datetime "created_at", null: false

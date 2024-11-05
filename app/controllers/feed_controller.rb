@@ -30,7 +30,7 @@ class FeedController < ApplicationController
     response = Client::Ai.generate(content)["response"]
     json = JSON.parse(response)
 
-    Summary.create!(external_id: external_id, summary: json["summary"], context: json["context"], principal_fact: json["principal_facts"], conclusion: json["conclusion"])
+    Summary.create!(external_id: external_id, summary: json["summary"], context: json["context"], principal_facts: json["principal_facts"], conclusion: json["conclusion"])
   end
 
   def news
