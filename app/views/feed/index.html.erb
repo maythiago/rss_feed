@@ -1,5 +1,5 @@
 <div class="columns is-multiline">
-    <% @news_items.each do |news| %>
-        <%= render partial: 'news_item', locals: { news: news } %>
+    <% @contents.each do |content| %>
+        <%= render partial: 'news_item', locals: { content: content } %>
     <% end %>
 </div>

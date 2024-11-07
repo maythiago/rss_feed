@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_03_151805) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_07_004341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contents", force: :cascade do |t|
+    t.text "title"
+    t.text "content"
+    t.string "identifier", limit: 255
+    t.integer "lock_version"
+    t.bigint "source_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "pub_date"
+    t.index ["source_id"], name: "index_contents_on_source_id"
+  end
 
   create_table "sources", force: :cascade do |t|
     t.string "url", limit: 255
@@ -29,4 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_151805) do
     t.datetime "updated_at", null: false
     t.string "external_id"
   end
+
+  add_foreign_key "contents", "sources"
 end

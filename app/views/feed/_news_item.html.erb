@@ -2,18 +2,18 @@
     <div class="box">
         <div class="content">
             <p class="title is-5">
-                <%= news[:title] %>
+                <%= content.title %>
             </p>
             <p class="subtitle is-7">
-                <%= l news[:pub_date], format: :long %>
+                <%= l(content.pub_date, format: :long) if content.pub_date.present? %>
             </p>
             <p class="content is-6">
-                <%= truncate(strip_tags(news[:content]), length: 360) %>
+                <%= truncate(strip_tags(content.content), length: 360) %>
             </p>
             <div class="columns is-centered">
-                <div id="feed_summary_<%= news[:guid].parameterize %>" data-controller="turbo">
-                    <%= button_to 'Generate Summary' , summary_feed_path(feed_title: news[:title], feed_guid:
-                        news[:guid]), method: :post, data: { turbo_frame: "news_summary_#{news[:guid].parameterize}" },
+                <div id="feed_summary_<%= content.id %>" data-controller="turbo">
+                    <%= button_to 'Generate Summary' , summary_feed_path(content_id: content.id),
+                                  method: :post, data: { turbo_frame: "news_summary_#{content.id}" },
                         class: 'button' %>
                         <!-- The summary will be loaded here -->
                 </div>
