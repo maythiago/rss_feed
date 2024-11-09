@@ -4,8 +4,8 @@ source "https://rubygems.org"
 gem "rails", "~> 7.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-# Use pg as the database for Active Record
- gem 'pg', '~> 1.5'
+ # Use pg as the database for Active Record
+ gem "pg", "~> 1.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -34,13 +34,13 @@ gem "bootsnap", require: false
 # Bulma
 gem "bulma-rails", "~> 1.0.0"
 # Rss
-gem 'rss'
+gem "rss"
 
 # httparty
-gem 'httparty'
+gem "httparty"
 
 # redcarpet
-gem 'redcarpet'
+gem "redcarpet"
 
 gem "interactor", "~> 3.0"
 
@@ -56,15 +56,17 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-  gem "rspec", '~> 3.10'
-  gem 'rspec-rails', '~> 7.0.1'
+  gem "rspec", "~> 3.10"
+  gem "rspec-rails", "~> 7.0.1"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'annotate'
+  gem "annotate"
 end
 gem "dartsass-rails", "~> 0.5.1"
 
 gem "factory_bot", "~> 6.5"
+
+gem "devise", "~> 4.9"

@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe FeedController, type: :controller do
   describe 'GET #index' do
     it 'assigns @newsitems' do
-      allow(Client::Rss).to receive(:fetch_rss_feed).and_return(['newsitem1', 'newsitem2'])
+      allow(Client::Rss).to receive(:fetch_rss_feed).and_return([ 'newsitem1', 'newsitem2' ])
       get :index
-      expect(assigns(:newsitems)).to eq(['newsitem1', 'newsitem_2'])
+      expect(assigns(:newsitems)).to eq([ 'newsitem1', 'newsitem_2' ])
     end
   end
 

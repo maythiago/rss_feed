@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,8 +11,8 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :feed
-  post 'feed/summary', to: 'feed#summary', as: 'summary_feed'
+  post "feed/summary", to: "feed#summary", as: "summary_feed"
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "feed#summary"
 end

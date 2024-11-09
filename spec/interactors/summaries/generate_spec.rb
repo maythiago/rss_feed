@@ -7,7 +7,7 @@ RSpec.describe Summaries::Generate do
 
     context 'when summary valid' do
       before do
-        response = { "summary" => "Summary text", "context" => "Context text", "principal_facts" => ["Fact 1", "Fact 2"], "conclusion" => "Conclusion text" }.to_json
+        response = { "summary" => "Summary text", "context" => "Context text", "principal_facts" => [ "Fact 1", "Fact 2" ], "conclusion" => "Conclusion text" }.to_json
         allow(Client::Ai).to receive(:generate).with(content.content).and_return({ "response" => response })
       end
 
@@ -19,7 +19,7 @@ RSpec.describe Summaries::Generate do
         expect(summary.external_id).to eq(content.identifier)
         expect(summary.summary).to eq("Summary text")
         expect(summary.context).to eq("Context text")
-        expect(summary.principal_facts).to eq(["Fact 1", "Fact 2"])
+        expect(summary.principal_facts).to eq([ "Fact 1", "Fact 2" ])
         expect(summary.conclusion).to eq("Conclusion text")
       end
     end

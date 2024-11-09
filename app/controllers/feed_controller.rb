@@ -2,6 +2,7 @@
 
 class FeedController < ApplicationController
   before_action :load_news, only: %i[index]
+  before_action :authenticate_user!
 
   def index
     @contents = contents

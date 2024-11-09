@@ -8,4 +8,5 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Source.create(url: 'https://www.brasildefato.com.br/rss2.xml')
+Source.create!(url: 'https://www.brasildefato.com.br/rss2.xml')
+User.create!(email: 'teste@gmail.com', password: '123456')

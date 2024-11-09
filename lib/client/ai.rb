@@ -4,8 +4,8 @@ module Client
     default_timeout 180
 
     def self.generate(content)
-      response = post('http://ollama:11434/api/generate', body: {
-                                 model: 'llama3.2',
+      response = post("http://ollama:11434/api/generate", body: {
+                                 model: "llama3.2",
                                  prompt: prompt(content),
                                  format: "json",
                                  stream: false
