@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   has_many :subscriptions
   has_many :sources, through: :subscriptions
+
+  def contents
+    Content.where(source: sources)
+  end
 end
 
 # == Schema Information

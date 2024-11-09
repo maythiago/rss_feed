@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class FeedController < ApplicationController
-  before_action :load_news, only: %i[index]
   before_action :authenticate_user!
+  before_action :load_news, only: %i[index]
 
   def index
     @contents = contents
@@ -35,7 +35,7 @@ class FeedController < ApplicationController
   end
 
   def contents
-    @contents ||= Content.all.order(pub_date: :desc)
+    @contents ||= current_user.contents.order(pub_date: :desc)
   end
 
   def load_news

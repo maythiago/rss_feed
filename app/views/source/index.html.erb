@@ -1,0 +1,5 @@
+<div class="columns is-multiline">
+    <% @sources.each do |source| %>
+        <%= render partial: 'source_item', locals: { source: source } %>
+    <% end %>
+</div>

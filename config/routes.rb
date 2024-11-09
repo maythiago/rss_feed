@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "source/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  resources :feed
+  resources :feed, only: [:index]
+  resources :source, only: [:index, :destroy]
   post "feed/summary", to: "feed#summary", as: "summary_feed"
 
   # Defines the root path route ("/")
