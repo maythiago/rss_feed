@@ -42,6 +42,8 @@ gem 'httparty'
 # redcarpet
 gem 'redcarpet'
 
+gem "interactor", "~> 3.0"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -64,3 +66,5 @@ group :development do
   gem 'annotate'
 end
 gem "dartsass-rails", "~> 0.5.1"
+
+gem "factory_bot", "~> 6.5"

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class FeedController < ApplicationController
-  URL = "https://www.brasildefato.com.br/rss2.xml"
   before_action :load_news, only: %i[index]
 
   def index
@@ -9,7 +8,7 @@ class FeedController < ApplicationController
   end
 
   def summary
-    summary_model = fetch_summary(news_guid)
+    summary_model = fetch_summary
 
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{content.id}", partial: "feed/summary", locals: { summary: summary_model }) }
@@ -31,10 +30,7 @@ class FeedController < ApplicationController
   end
 
   def generate_summary
-    response = Client::Ai.generate(content.content)["response"]
-    json = JSON.parse(response)
-
-    Summary.create!(external_id: content.identifier, summary: json["summary"], context: json["context"], principal_facts: json["principal_facts"], conclusion: json["conclusion"])
+    Summaries::Generate.call(content: content).summary
   end
 
   def contents
@@ -42,17 +38,7 @@ class FeedController < ApplicationController
   end
 
   def load_news
-    sources.each do |source|
-      result = Client::Rss.fetch_rss_feed(source.url)
-
-      result.each do |item|
-        Content.find_or_create_by!(identifier: item[:guid], source: source) do |content|
-          content.title = item[:title]
-          content.content = item[:content]
-          content.pub_date = item[:pub_date]
-        end
-      end
-    end.flatten
+    Contents::Load.call(sources: sources)
   end
 
   def sources

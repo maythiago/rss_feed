@@ -101,6 +101,8 @@ GEM
     diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.13.0)
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (4.28.3)
@@ -131,6 +133,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    interactor (3.1.2)
     io-console (0.7.2)
     irb (1.14.1)
       rdoc (>= 4.0.0)
@@ -358,8 +361,10 @@ DEPENDENCIES
   bulma-rails (~> 1.0.0)
   dartsass-rails (~> 0.5.1)
   debug
+  factory_bot (~> 6.5)
   httparty
   importmap-rails
+  interactor (~> 3.0)
   jbuilder
   pg (~> 1.5)
   puma (>= 5.0)

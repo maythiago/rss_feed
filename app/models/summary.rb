@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Summary < ApplicationRecord
+  validates :external_id, presence: true
+  validates :summary, presence: true
+  validates :context, presence: true
+  validates :principal_facts, presence: true
+  validates :conclusion, presence: true
 end
 
 # == Schema Information
