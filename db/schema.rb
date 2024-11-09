@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_142053) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_09_144212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_142053) do
     t.string "url", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "source_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_subscriptions_on_source_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "summaries", force: :cascade do |t|
@@ -55,4 +64,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_142053) do
   end
 
   add_foreign_key "contents", "sources"
+  add_foreign_key "subscriptions", "sources"
+  add_foreign_key "subscriptions", "users"
 end

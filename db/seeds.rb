@@ -9,4 +9,6 @@
 #   end
 
 Source.create!(url: 'https://www.brasildefato.com.br/rss2.xml')
-User.create!(email: 'teste@gmail.com', password: '123456')
+user = User.create!(email: 'teste@gmail.com', password: '123456')
+
+user.sources << Source.first

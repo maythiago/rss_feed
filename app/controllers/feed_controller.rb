@@ -43,6 +43,6 @@ class FeedController < ApplicationController
   end
 
   def sources
-    Source.all
+    current_user.sources
   end
 end
