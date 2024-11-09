@@ -17,7 +17,11 @@ module Summaries
                        content = context.content
                        response = Client::Ai.generate(content.content)["response"]
                        json = JSON.parse(response)
-                       Summary.create(external_id: content.identifier, summary: json["summary"], context: json["context"], principal_facts: json["principal_facts"], conclusion: json["conclusion"])
+                       Summary.create(content: content,
+                                      summary: json["summary"],
+                                      context: json["context"],
+                                      principal_facts: json["principal_facts"],
+                                      conclusion: json["conclusion"])
                      end
       end
     end

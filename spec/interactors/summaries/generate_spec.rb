@@ -16,7 +16,7 @@ RSpec.describe Summaries::Generate do
 
         expect(result).to be_success
         summary = result.summary
-        expect(summary.external_id).to eq(content.identifier)
+        expect(summary.content_id).to eq(content.id)
         expect(summary.summary).to eq("Summary text")
         expect(summary.context).to eq("Context text")
         expect(summary.principal_facts).to eq([ "Fact 1", "Fact 2" ])

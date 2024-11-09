@@ -27,7 +27,7 @@ class FeedController < ApplicationController
   end
 
   def fetch_summary
-    Summary.find_by(external_id: content.identifier) || generate_summary
+    Summary.find_by(content: content) || generate_summary
   end
 
   def generate_summary

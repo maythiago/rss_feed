@@ -15,5 +15,9 @@ end
 #  summary         :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  external_id     :string
+#  content_id      :bigint
+#
+# Indexes
+#
+#  index_summaries_on_content_id  (content_id)
 #

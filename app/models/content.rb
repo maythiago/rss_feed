@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Content < ApplicationRecord
   belongs_to :source
+  has_one :summary, dependent: :destroy
 end
 
 # == Schema Information

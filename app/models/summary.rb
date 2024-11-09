@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class Summary < ApplicationRecord
-  validates :external_id, presence: true
   validates :summary, presence: true
   validates :context, presence: true
   validates :principal_facts, presence: true
   validates :conclusion, presence: true
+
+  belongs_to :content
 end
 
 # == Schema Information
@@ -19,5 +20,9 @@ end
 #  summary         :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  external_id     :string
+#  content_id      :bigint
+#
+# Indexes
+#
+#  index_summaries_on_content_id  (content_id)
 #

@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   post "feed/summary", to: "feed#summary", as: "summary_feed"
 
   # Defines the root path route ("/")
-  root "feed#summary"
+  root "feed#index"
 end
