@@ -3,6 +3,8 @@
 class Source < ApplicationRecord
   has_many :subscriptions
   has_many :users, through: :subscriptions
+  validates :url, presence: true
+  validates :url, uniqueness: true
 end
 
 # == Schema Information

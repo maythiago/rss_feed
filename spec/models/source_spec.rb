@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Source, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should validate_presence_of(:url) }
+    it { should validate_uniqueness_of(:url) }
+  end
+
+  context 'associations' do
+    it { should have_many(:users) }
+    it { should have_many(:subscriptions) }
+  end
 end
 
 # == Schema Information

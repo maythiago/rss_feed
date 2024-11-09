@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :sources, through: :subscriptions
 
+  validates :email, presence: true,  uniqueness: { case_sensitive: false }
   def contents
     Content.where(source: sources)
   end

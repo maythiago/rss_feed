@@ -1,7 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Summary, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should validate_presence_of(:summary) }
+    it { should validate_presence_of(:context) }
+    it { should validate_presence_of(:principal_facts) }
+    it { should validate_presence_of(:conclusion) }
+  end
+
+  context 'associations' do
+    it { should belong_to(:content) }
+  end
 end
 
 # == Schema Information

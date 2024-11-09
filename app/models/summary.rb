@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 class Summary < ApplicationRecord
-  validates :summary, presence: true
-  validates :context, presence: true
-  validates :principal_facts, presence: true
-  validates :conclusion, presence: true
+  validates :summary, :context, :principal_facts, :conclusion, presence: true
 
   belongs_to :content
 end

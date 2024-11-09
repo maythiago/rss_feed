@@ -1,7 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:user) }
+  context 'associations' do
+    it { should have_many(:sources) }
+    it { should have_many(:subscriptions) }
+  end
+
+  context 'validations' do
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+  end
 end
 
 # == Schema Information

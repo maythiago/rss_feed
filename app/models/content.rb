@@ -3,6 +3,9 @@
 class Content < ApplicationRecord
   belongs_to :source
   has_one :summary, dependent: :destroy
+
+  validates :title, :content, :pub_date, :identifier, presence: true
+  validates :identifier, uniqueness: { scope: :source_id }
 end
 
 # == Schema Information
