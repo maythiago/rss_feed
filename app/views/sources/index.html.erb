@@ -1,3 +1,5 @@
+<h1 class="title">Fontes</h1>
+<%= link_to "Criar", new_source_path , method: :create, class: "button" %>
 <div class="columns is-multiline">
     <% @sources.each do |source| %>
         <%= render partial: 'source_item', locals: { source: source } %>

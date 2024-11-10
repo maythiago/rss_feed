@@ -4,6 +4,7 @@ RSpec.describe Source, type: :model do
   context 'validations' do
     it { should validate_presence_of(:url) }
     it { should validate_uniqueness_of(:url) }
+    it { should validate_presence_of(:name) }
   end
 
   context 'associations' do
@@ -17,6 +18,7 @@ end
 # Table name: sources
 #
 #  id         :bigint           not null, primary key
+#  name       :string
 #  url        :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

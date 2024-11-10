@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   resources :feed, only: [:index]
-  resources :source, only: [:index, :destroy]
+  resources :sources, only: [:index, :new, :create, :destroy]
   post "feed/summary", to: "feed#summary", as: "summary_feed"
 
   # Defines the root path route ("/")

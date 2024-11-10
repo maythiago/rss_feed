@@ -1,0 +1,9 @@
+    <%= form_with model: @source, url: sources_path, local: false, data: { turbo: true } do |form| %>
+      <div>
+        <%= form.label :url %>
+        <%= form.text_field :url %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>

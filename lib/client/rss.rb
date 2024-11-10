@@ -21,5 +21,16 @@ module Client
 
       news_items
     end
+
+    def self.fetch_channel_info(url)
+      channel = nil
+      URI.open(url) do |rss|
+        feed = RSS::Parser.parse(rss)
+        channel =  {
+          title: feed.channel.title
+        }
+      end
+      return channel
+    end
   end
 end
