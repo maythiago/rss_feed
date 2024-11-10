@@ -25,7 +25,7 @@ class SourcesController < ApplicationController
 
     @source = Source.find_or_create_by(url: source_params[:url])
     @source.users << current_user
-    @source.update(name: rss[:title])
+    @source.update(name: rss[:title], url: source_params[:url])
 
     redirect_to sources_path
   end

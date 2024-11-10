@@ -35,7 +35,7 @@ class FeedController < ApplicationController
   end
 
   def contents
-    @contents ||= current_user.contents.order(pub_date: :desc)
+    @contents ||= current_user.contents.includes([:source]).order(pub_date: :desc)
   end
 
   def load_news

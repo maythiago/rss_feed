@@ -7,11 +7,12 @@
             <p class="subtitle is-7">
                 <%= l(content.pub_date, format: :long) if content.pub_date.present? %>
                 |
-                <%= content.source.name if content.source %>
+                <%= link_to content.source.name, content.identifier  %>
             </p>
             <p class="content is-6">
                 <%= truncate(strip_tags(content.content), length: 360) %>
             </p>
+            <% if content.content.present? %>
             <div class="columns is-centered">
                 <div id="feed_summary_<%= content.id %>" data-controller="turbo">
                     <%= button_to 'Generate Summary' , summary_feed_path(content_id: content.id),
@@ -20,6 +21,7 @@
                         <!-- The summary will be loaded here -->
                 </div>
             </div>
+            <% end %>
         </div>
     </div>
 </div>
