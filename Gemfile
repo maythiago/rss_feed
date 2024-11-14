@@ -75,3 +75,5 @@ gem "dartsass-rails", "~> 0.5.1"
 gem "factory_bot", "~> 6.5"
 
 gem "devise", "~> 4.9"
+
+gem 'font-awesome-sass', '~> 6.5'

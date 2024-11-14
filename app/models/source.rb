@@ -6,6 +6,29 @@ class Source < ApplicationRecord
   validates :url, :name, presence: true
   validates :url, uniqueness: true
   has_many :contents, dependent: :destroy
+  validate :valid_url
+  validate :url_is_rss
+
+  private
+
+  def valid_url
+    errors.add(:url, 'is not a valid URL') unless valid_url?(url)
+  end
+
+  def url_is_rss
+    errors.add(:url, 'is not a valid RSS feed') unless rss?
+  end
+
+  def valid_url?(url)
+    uri = URI.parse(url)
+    uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+  rescue URI::InvalidURIError
+    false
+  end
+
+  def rss?
+    Client::Rss.fetch_channel_info(url).present?
+  end
 end
 
 # == Schema Information

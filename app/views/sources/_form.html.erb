@@ -1,9 +1,19 @@
+<div class="box">
     <%= form_with model: @source, url: sources_path, local: false, data: { turbo: true } do |form| %>
-      <div>
-        <%= form.label :url %>
-        <%= form.text_field :url %>
-      </div>
-      <div>
-        <%= form.submit %>
-      </div>
-    <% end %>
+        <div class="field">
+            <%= form.label :url, class: 'label' %>
+                <div class="control has-icons-left">
+                    <%= form.text_field :url, class: 'input' %>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-globe"></i>
+                        </span>
+                        <% @source.errors.full_messages_for(:url).each do |message| %>
+                            <p class="help is-danger">
+                                <%= message %>
+                            </p>
+                            <% end %>
+                </div>
+        </div>
+            <%= form.submit 'Criar fonte' , class: 'button is-primary' %>
+            <% end %>
+</div>

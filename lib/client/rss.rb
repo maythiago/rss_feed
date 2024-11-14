@@ -23,14 +23,18 @@ module Client
     end
 
     def self.fetch_channel_info(url)
-      channel = nil
-      URI.open(url) do |rss|
-        feed = RSS::Parser.parse(rss)
-        channel =  {
-          title: feed.channel.title
-        }
+      begin
+        channel = nil
+        URI.open(url) do |rss|
+          feed = RSS::Parser.parse(rss)
+          channel =  {
+            title: feed.channel.title
+          }
+        end
+        channel
+      rescue
+        nil
       end
-      return channel
     end
   end
 end

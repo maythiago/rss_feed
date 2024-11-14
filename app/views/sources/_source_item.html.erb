@@ -1,15 +1,18 @@
-<div class="column is-half is-offset-one-quarter">
-    <div class="box">
-        <div class="level">
-            <div class="">
-                <p class="title is-5">
-                    <%= source.name %>
-                </p>
-                <p class="subtitle is-5">
-                    <%= source.url %>
-                </p>
-            </div>
-            <%= button_to "", source_path(source), method: :delete, class: "delete" %>
+<div class="box">
+    <div class="level">
+        <div class="">
+            <p class="title is-5">
+                <%= source.name %>
+            </p>
+            <p class="subtitle is-5">
+                <%= source.url %>
+            </p>
         </div>
+        <%= button_to source_path(source), method: :delete, data: {
+            turbo_confirm: "Você tem certeza de que deseja excluir este item?" } do %>
+            <span class="icon">
+                <i class="far fa-trash-alt"></i>
+            </span>
+            <% end %>
     </div>
 </div>

@@ -18,12 +18,15 @@ class SourcesController < ApplicationController
   end
 
   def create
-    if rss.nil?
-      render :new, status: :unprocessable_entity
-      return
-    end
+    @source = Source.find_by(url: source_params[:url])
 
-    @source = Source.find_or_create_by(url: source_params[:url])
+    if @source.nil?
+      @source = Source.new(url: source_params[:url])
+      unless @source.save
+        render :new, status: :unprocessable_entity
+        return
+      end
+    end
     @source.users << current_user
     @source.update(name: rss[:title], url: source_params[:url])
 

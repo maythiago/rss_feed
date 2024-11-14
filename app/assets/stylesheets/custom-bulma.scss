@@ -1,0 +1,27 @@
+// Override Bulma variables
+
+// $primary: #89CFF0;
+// $secondary: #D5B3E6;
+// $info: #A2D5C6;
+// $success: #B8E8D2;
+// $warning: #FFD8A8;
+// $danger: #F7A8A8;
+// $background: #FDF6E3;
+$primary: #F4A261;
+$secondary: #A8DADC;
+$info: #457B9D;
+$success: #B7E4C7;
+$warning: #FFE8A1;
+$danger: #F08080;
+$background: #FDF4E3;
+// Override global Sass variables from the /utilities folder
+@use "sass/utilities" with (
+  $primary: $primary,
+  $info: $info,
+  $success: $success,
+  $warning: $warning,
+  $danger: $danger
+);
+
+// Load all styles
+@use "bulma";
