@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
 
   context 'validations' do
     it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:email).case_insensitive }
   end
 end
@@ -20,6 +21,7 @@ end
 #  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  name                   :string           not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

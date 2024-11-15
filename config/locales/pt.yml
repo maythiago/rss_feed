@@ -1,0 +1,16 @@
+pt:
+  hello: "Hello world"
+  helpers:
+    placeholder:
+      user:
+        email: 'Digite o seu email'
+        name: 'Digite o seu email'
+        password: "Digite a sua senha"
+        password_confirmation: 'Confirme a sua senha'
+  activerecord:
+      attributes:
+        user:
+          name: "Nome"
+          password: "Senha"
+          password_confirmation: 'Confirme a senha'
+          remember_me: "Lembrar-me"

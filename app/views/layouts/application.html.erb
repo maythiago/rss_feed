@@ -18,30 +18,32 @@
     <%= javascript_importmap_tags %>
   </head>
 
-<nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item">
-            <%= image_tag("drawing.svg") %>
-        </a>
-    </div>
-
-    <% if user_signed_in? %>
-        <div class="navbar-start">
-            <%= link_to "Feed" , feed_index_path, class: "navbar-item" %>
-                <%= link_to "Fontes" , sources_path, class: "navbar-item" %>
+    <nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <%= image_tag("drawing.svg") %>
+            </a>
         </div>
 
-        <div class="navbar-end">
-            <div class='navbar-item'>
-                <%= button_to destroy_user_session_path, method: :delete, data:
-                    {confirm: 'Are you sure you want to sign out?' }, class: 'button is-light' do %>
-  <i class="fas fa-sign-out-alt"></i> Sign Out
-<% end %>
+        <% if user_signed_in? %>
+            <div class="navbar-start">
+                <%= link_to "Feed" , feed_index_path, class: "navbar-item" %>
+                    <%= link_to "Fontes" , sources_path, class: "navbar-item" %>
             </div>
-        </div>
-    <% end %>
-</nav>
-<body>
-  <%= yield %>
-</body>
+
+            <div class="navbar-end">
+                <div class='navbar-item'>
+                    <%= link_to "Editar usuário" , edit_user_registration_path, class: "navbar-item" %>
+                        <%= button_to destroy_user_session_path, method: :delete, data:
+                            {confirm: 'Tem certeza de que deseja se desconectar?' }, class: 'button is-light' do %>
+                            <i class="fas fa-sign-out-alt mr-2"></i>Sign Out
+                            <% end %>
+                </div>
+            </div>
+            <% end %>
+    </nav>
+
+    <body>
+        <%= yield %>
+    </body>
 </html>

@@ -6,10 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :sources, through: :subscriptions
 
   validates :email, presence: true,  uniqueness: { case_sensitive: false }
+  validates :name, presence: true
+
   def contents
     Content.where(source: sources)
   end
@@ -22,6 +24,7 @@ end
 #  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  name                   :string           not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

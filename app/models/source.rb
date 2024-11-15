@@ -12,11 +12,11 @@ class Source < ApplicationRecord
   private
 
   def valid_url
-    errors.add(:url, 'is not a valid URL') unless valid_url?(url)
+    errors.add(:url, "is not a valid URL") unless valid_url?(url)
   end
 
   def url_is_rss
-    errors.add(:url, 'is not a valid RSS feed') unless rss?
+    errors.add(:url, "is not a valid RSS feed") unless rss?
   end
 
   def valid_url?(url)

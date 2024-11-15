@@ -12,8 +12,8 @@ class FeedController < ApplicationController
     summary_model = fetch_summary
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', partial: 'feed/summary_modal', locals: { summary: summary_model, content: content }) }
-      format.html { render partial: 'feed/summary_modal', locals: { summary: summary_model, content: content } }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("modal", partial: "feed/summary_modal", locals: { summary: summary_model, content: content }) }
+      format.html { render partial: "feed/summary_modal", locals: { summary: summary_model, content: content } }
     end
   end
 
@@ -36,7 +36,7 @@ class FeedController < ApplicationController
   end
 
   def contents
-    @contents ||= current_user.contents.includes([:source]).order(pub_date: :desc)
+    @contents ||= current_user.contents.includes([ :source ]).order(pub_date: :desc)
   end
 
   def load_news
