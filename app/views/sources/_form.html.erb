@@ -1,6 +1,6 @@
 <div class="box">
     <%= form_with model: @source, url: sources_path, local: false, data: { turbo: true } do |form| %>
-        <div class="field">
+        <div class="field mb-4">
             <%= form.label :url, class: 'label' %>
                 <div class="control has-icons-left">
                     <%= form.text_field :url, class: 'input' %>
