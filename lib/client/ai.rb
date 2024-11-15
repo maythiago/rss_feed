@@ -27,7 +27,7 @@ Resuma a seguinte noticia organizando as informações em quatro seções, que d
 3. Contexto: Forneça informações detalhadas sobre o ambiente ou circunstâncias que ajudaram a moldar os eventos relatados, destacando o cenário histórico ou atual relacionado.
 4. Conclusão: Explique as principais conclusões ou desfechos, considerando as implicações e possíveis desdobramentos futuros.
 
-Mantenha um tom neutro e profissional, e garanta que o resumo seja acessível a um público geral, sem omitir informações relevantes, nem adicionar informações novas.
+Mantenha um tom amigavel e profissional, e garanta que o resumo seja acessível a um público geral, sem omitir informações relevantes, nem adicionar informações novas.
 Escreva a resposta em português, utilizando frases completas e coesas, e evite repetições ou redundâncias.
 
 Notícia: #{sanitized_content}
@@ -40,10 +40,10 @@ Retorne as informações acima no formato json:
 
 Exemplo de saída:
 {
-  "summary": "",
-  "principal_facts": ["", ""],
-  "context": "",
-  "conclusion": ""
+  "summary": "Resumo",
+  "principal_facts": ["Principal fato 1", "Principal fato 2"],
+  "context": "Contexto",
+  "conclusion": "Conclusão"
 }
 PROMPT
     end
