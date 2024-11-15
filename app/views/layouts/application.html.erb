@@ -27,11 +27,21 @@
                     fill="black" class="bd-svg-black" />
             </svg>
         </a>
+    </div>
+
+    <% if user_signed_in? %>
         <div class="navbar-start">
             <%= link_to "Feed" , feed_index_path, class: "navbar-item" %>
-            <%= link_to "Fontes" , sources_path, class: "navbar-item" %>
+                <%= link_to "Fontes" , sources_path, class: "navbar-item" %>
         </div>
-    </div>
+
+        <div class="navbar-end">
+            <div class='navbar-item'>
+                <%= button_to 'Sign Out' , destroy_user_session_path, method: :delete, data:
+                    {confirm: 'Are you sure you want to sign out?' } %>
+            </div>
+        </div>
+    <% end %>
 </nav>
 <body>
   <%= yield %>
