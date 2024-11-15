@@ -3,18 +3,28 @@
   <div class="modal-card">
     <section class="modal-card-body">
       <!-- Conteúdo da notícia -->
+      <p class="title is-5"><%= content.title %> </p>
+      <p class="subtitle is-7">
+          <%= l(content.pub_date, format: :long) if content.pub_date.present? %>
+              |
+              <%= link_to content.source.name, content.identifier %>
+      </p>
       <div class="content">
         <%= raw content.content %>
         <hr>
+
+        <h2>Summary</h2>
+        <%= summary.summary %>
+
+        <h2>Contexto</h2>
+        <%= summary.context %>
+
         <h2>Principais Fatos</h2>
         <ul>
             <% summary.principal_facts.map do |fact| %>
                 <li><%= fact %></li>
             <% end %>
         </ul>
-
-        <h2>Contexto</h2>
-        <%= summary.context %>
 
         <h2>Conclusão</h2>
         <%= summary.conclusion %>

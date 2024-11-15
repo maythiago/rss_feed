@@ -3,7 +3,7 @@
 class Source < ApplicationRecord
   has_many :subscriptions
   has_many :users, through: :subscriptions
-  validates :url, :name, presence: true
+  validates :url,  presence: true
   validates :url, uniqueness: true
   has_many :contents, dependent: :destroy
   validate :valid_url
@@ -27,7 +27,11 @@ class Source < ApplicationRecord
   end
 
   def rss?
-    Client::Rss.fetch_channel_info(url).present?
+    rss.present?
+  end
+
+  def rss
+    Client::Rss.fetch_channel_info(url)
   end
 end
 

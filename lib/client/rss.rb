@@ -6,12 +6,12 @@ module Client
     def self.fetch_rss_feed(url)
       news_items = []
       URI.open(url) do |rss|
-        feed = RSS::Parser.parse(rss)
+        feed = RSS::Parser.parse(rss, validate: false)
         feed.items.each do |item|
           news_items << {
             title: item.title,
             link: item.link,
-            guid: item.guid.content || item.link,
+            guid: item.guid&.content&.presence || item.link.presence || item.title,
             description: item.description,
             pub_date: item.pubDate,
             content: item.content_encoded
@@ -26,13 +26,14 @@ module Client
       begin
         channel = nil
         URI.open(url) do |rss|
-          feed = RSS::Parser.parse(rss)
+          feed = RSS::Parser.parse(rss, validate: false)
           channel =  {
             title: feed.channel.title
           }
         end
         channel
-      rescue
+      rescue => e
+          pp e
         nil
       end
     end

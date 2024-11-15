@@ -15,7 +15,7 @@
             <% if content.content.present? %>
             <div class="columns is-centered">
                 <%= turbo_frame_tag 'modal' %>
-                <%= button_to 'Generate Summary' , summary_feed_path(content_id: content.id),
+                <%= button_to 'Gerar resumo' , summary_feed_path(content_id: content.id),
                               method: :post, remote: true, data: { turbo_frame: "modal" },
                               class: 'button' %>
             </div>
