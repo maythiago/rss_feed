@@ -60,6 +60,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rspec", "~> 3.10"
   gem "rspec-rails", "~> 7.0.1"
+  gem 'railroady', '~> 1.6'
 end
 
 group :test do

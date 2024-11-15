@@ -147,6 +147,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    initials (0.4.3)
     interactor (3.1.2)
     io-console (0.7.2)
     irb (1.14.1)
@@ -222,6 +223,7 @@ GEM
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
+    railroady (1.6.0)
     rails (7.2.2)
       actioncable (= 7.2.2)
       actionmailbox (= 7.2.2)
@@ -399,12 +401,14 @@ DEPENDENCIES
   font-awesome-sass (~> 6.5)
   httparty
   importmap-rails
+  initials
   interactor (~> 3.0)
   jbuilder
   letter_opener
   letter_opener_web
   pg (~> 1.5)
   puma (>= 5.0)
+  railroady (~> 1.6)
   rails (~> 7.2.1)
   redcarpet
   rspec (~> 3.10)
