@@ -1,0 +1,24 @@
+<div class="modal" id="summary-modal" data-controller="modal">
+  <div class="modal-background" data-action="click->modal#close"></div>
+  <div class="modal-card">
+    <section class="modal-card-body">
+      <!-- Conteúdo da notícia -->
+      <div class="content">
+        <%= raw content.content %>
+        <hr>
+        <h2>Principais Fatos</h2>
+        <ul>
+            <% summary.principal_facts.map do |fact| %>
+                <li><%= fact %></li>
+            <% end %>
+        </ul>
+
+        <h2>Contexto</h2>
+        <%= summary.context %>
+
+        <h2>Conclusão</h2>
+        <%= summary.conclusion %>
+      </div>
+    </section>
+  </div>
+</div>

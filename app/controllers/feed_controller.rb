@@ -12,7 +12,8 @@ class FeedController < ApplicationController
     summary_model = fetch_summary
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("feed_summary_#{content.id}", partial: "feed/summary", locals: { summary: summary_model }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', partial: 'feed/summary_modal', locals: { summary: summary_model, content: content }) }
+      format.html { render partial: 'feed/summary_modal', locals: { summary: summary_model, content: content } }
     end
   end
 

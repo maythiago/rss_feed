@@ -14,12 +14,10 @@
             </p>
             <% if content.content.present? %>
             <div class="columns is-centered">
-                <div id="feed_summary_<%= content.id %>" data-controller="turbo">
-                    <%= button_to 'Generate Summary' , summary_feed_path(content_id: content.id),
-                                  method: :post, data: { turbo_frame: "news_summary_#{content.id}" },
-                        class: 'button' %>
-                        <!-- The summary will be loaded here -->
-                </div>
+                <%= turbo_frame_tag 'modal' %>
+                <%= button_to 'Generate Summary' , summary_feed_path(content_id: content.id),
+                              method: :post, remote: true, data: { turbo_frame: "modal" },
+                              class: 'button' %>
             </div>
             <% end %>
         </div>
