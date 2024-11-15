@@ -15,6 +15,10 @@ class User < ApplicationRecord
   def contents
     Content.where(source: sources)
   end
+
+  def logo
+    "https://ui-avatars.com/api/?name=#{name}&background=random"
+  end
 end
 
 # == Schema Information

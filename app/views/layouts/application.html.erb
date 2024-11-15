@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
   <head>
-    <title><%= content_for(:title) || "Rss Feed" %></title>
+    <title><%= content_for(:title) || "News Aggregator" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -33,16 +33,15 @@
 
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Perfil
-                    </a>
+                        <figure class="navbar-item image">
+                        <%= image_tag(current_user.logo, class: 'is-rounded') %>
                     <div class='navbar-dropdown is-right'>
                         <%= link_to "Editar usuário" , edit_user_registration_path, class: 'navbar-item' %>
                             <%= button_to destroy_user_session_path, method: :delete, data:
                                 {confirm: 'Tem certeza de que deseja se desconectar?' }, class: 'navbar-item' do %>
                                 <i class="fas fa-sign-out-alt mr-2"></i>Desconectar
                                 <% end %>
-                    </div>
+                    </figure>
                 </div>
             </div>
             <% end %>
