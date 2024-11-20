@@ -1,24 +1,23 @@
-# README
+# rss_feed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Funcionalidades
 
-Things you may want to cover:
+- **Cadastro de Usuários**: Sistema de autenticação com registro e recuperação de senha.
+- **Agregação de Conteúdos**: Adicione e gerencie feeds RSS personalizados.
+- **Visualização de Feeds**: Exibição de conteúdos agregados em uma linha do tempo personalizada.
+- **Geração de Resumos**: Resumos automatizados dos conteúdos selecionados.
 
-* Ruby version
+## Tecnologias Utilizadas
 
-* System dependencies
+- **Backend**: Ruby on Rails
+- **Frontend**: Turbo e Hotwire
+- **Banco de Dados**: PostgreSQL
+- **Inteligência Artificial**: Modelo LLaMA
+- **Contêinerização**: Docker e Docker Compose
+- **Testes**: RSpec
+- **Bibliotecas e Frameworks Adicionais**: Devise, HTTParty, RSS, Bulma CSS
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Instalação
+```sh
+docker-compose up
+```
