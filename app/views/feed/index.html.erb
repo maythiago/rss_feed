@@ -3,9 +3,12 @@
         <%= render partial: 'news_item', locals: { content: content } %>
     <% end %>
     <% if @contents.empty? %>
-        <div class="column is-half is-offset-one-quarter has-text-centered">
-            <%= image_tag('news-empty-state.svg', size: 256) %>
-                <p class=" has-text-grey-light subtitle">Não há notícias disponíveis!</p>
+        <div class="column is-full is-flex is-justify-content-center is-align-items-center" style="height: 60vh;">
+            <div class="has-text-centered">
+                <%= image_tag('news-empty-state.svg', size: 200) %>
+                <h1 class='has-text-grey-light title is-5'>Não há notícias disponíveis</h1>
+                <h2 class='has-text-grey-light subtitle is-5'>Por favor, adicione novas fontes para visualizar aqui.</p>
+            </div>
         </div>
-        <% end %>
+    <% end %>
 </div>
