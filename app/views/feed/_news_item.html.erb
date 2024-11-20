@@ -7,7 +7,7 @@
             <p class="subtitle is-7">
                 <%= l(content.pub_date, format: :long) if content.pub_date.present? %>
                 |
-                <%= link_to content.source.name, content.identifier  %>
+                <%= link_to content.source.name, content.identifier %>
             </p>
             <p class="content is-6">
                 <%= truncate(strip_tags(content.content), length: 360) %>
