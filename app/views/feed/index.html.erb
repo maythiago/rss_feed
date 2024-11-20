@@ -2,4 +2,10 @@
     <% @contents.each do |content| %>
         <%= render partial: 'news_item', locals: { content: content } %>
     <% end %>
+    <% if @contents.empty? %>
+        <div class="column is-half is-offset-one-quarter has-text-centered">
+            <%= image_tag('news-empty-state.svg', size: 256) %>
+                <p class=" has-text-grey-light subtitle">Não há notícias disponíveis!</p>
+        </div>
+        <% end %>
 </div>
