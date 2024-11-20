@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+
 module Client
   class Ai
     include HTTParty
     default_timeout 180
+    URL_GENERATE = "http://ollama:11434/api/generate"
+    MODEL = "llama3.2"
 
     def self.generate(content)
-      response = post("http://ollama:11434/api/generate", body: {
-                                 model: "llama3.2",
+      response = post(URL_GENERATE, body: {
+                                 model: MODEL,
                                  prompt: prompt(content),
                                  format: "json",
                                  stream: false

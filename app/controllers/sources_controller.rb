@@ -33,20 +33,7 @@ class SourcesController < ApplicationController
     redirect_to sources_path
   end
 
-  def rss
-    return unless valid_url?(source_params[:url])
-
-    @rss ||= Client::Rss.fetch_channel_info(source_params[:url])
-  end
-
   def source_params
     params.require(:source).permit(:url)
-  end
-
-  def valid_url?(url)
-    uri = URI.parse(url)
-    uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
-  rescue URI::InvalidURIError
-    false
   end
 end

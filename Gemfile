@@ -44,7 +44,7 @@ gem "redcarpet"
 
 gem "interactor", "~> 3.0"
 
-gem 'initials'
+gem "initials"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -60,7 +60,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "rspec", "~> 3.10"
   gem "rspec-rails", "~> 7.0.1"
-  gem 'railroady', '~> 1.6'
+  gem "railroady", "~> 1.6"
 end
 
 group :test do

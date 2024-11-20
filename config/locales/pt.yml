@@ -4,7 +4,7 @@ pt:
     placeholder:
       user:
         email: 'Digite o seu email'
-        name: 'Digite o seu email'
+        name: 'Digite o seu nome'
         password: "Digite a sua senha"
         password_confirmation: 'Confirme a sua senha'
 
