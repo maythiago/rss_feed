@@ -32,7 +32,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Bulma
-gem "bulma-rails", "~> 1.0.0"
+gem "bulma-rails", "~> 1.0.3"
 # Rss
 gem "rss"
 
